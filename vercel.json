@@ -1,7 +1,7 @@
 {
     "functions": {
       "api/app.py": {
-        "runtime": "[email protected]"
+        "runtime": "python@3.9"
       }
     },
     "routes": [
