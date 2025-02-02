@@ -1,0 +1,36 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>RAG Chatbot</title>
+  </head>
+  <body>
+    <h1>Ask me something:</h1>
+    <input type="text" id="user-query" placeholder="Type your question">
+    <button id="send-btn">Send</button>
+
+    <div id="response"></div>
+
+    <script>
+      const inputField = document.getElementById('user-query');
+      const sendBtn = document.getElementById('send-btn');
+      const responseDiv = document.getElementById('response');
+
+      sendBtn.addEventListener('click', async () => {
+        const userQuery = inputField.value;
+        if (!userQuery) return;
+
+        // Send a POST request to the FastAPI backend
+        const resp = await fetch('/chat', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({query: userQuery})
+        });
+        
+        const data = await resp.json();
+        responseDiv.innerText = data.answer;
+      });
+    </script>
+  </body>
+</html>
