@@ -1,5 +1,5 @@
 
-# import streamlit as st
+# import streamlit
 # from fact_checker import load_local_llm, fact_check
 # from retrieval import Retriever
 
